@@ -68,6 +68,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6566192641888645"
       crossorigin="anonymous"></script>
+    <script>
+      (function () {
+        const sensitiveRoutes = ['/login', '/checkout', '/admin'];
+        const path = window.location.pathname.toLowerCase();
+        const isSensitive = sensitiveRoutes.some((route) => path.startsWith(route));
+        const consent = window.localStorage.getItem('ads-consent-v1');
+        window.__adsBlocked = isSensitive;
+        window.__adsConsent = consent;
+        window.__canLoadAds = !isSensitive && consent === 'accepted';
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -88,6 +99,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-400/30 selection:text-white">
+    <div id="consentBanner" class="consent-banner hidden" role="dialog" aria-live="polite" aria-label="Consentimento de cookies">
+      <p>Usamos cookies para medição e publicidade (Google AdSense).</p>
+      <div class="consent-banner__actions">
+        <button id="acceptAdsConsent" type="button" class="copy-button">Aceitar</button>
+        <button id="declineAdsConsent" type="button" class="copy-button copy-button-ghost">Recusar</button>
+      </div>
+    </div>
     <div class="relative isolate overflow-hidden">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.14),_transparent_24%)]"></div>
       <div class="relative mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
@@ -119,7 +137,9 @@
                 data-full-width-responsive="true"
               ></ins>
               <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                if (window.__canLoadAds) {
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                }
               </script>
             </section>
           </div>
@@ -304,7 +324,9 @@
                     data-full-width-responsive="true"
                   ></ins>
                   <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    if (window.__canLoadAds) {
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                }
                   </script>
                 </section>
 
@@ -355,7 +377,9 @@
                   data-full-width-responsive="true"
                 ></ins>
                 <script>
+                  if (window.__canLoadAds) {
                   (adsbygoogle = window.adsbygoogle || []).push({});
+                }
                 </script>
               </section>
 
@@ -419,7 +443,9 @@
             data-full-width-responsive="true"
           ></ins>
           <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
+            if (window.__canLoadAds) {
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                }
           </script>
         </section>
 
@@ -432,6 +458,32 @@
       </div>
     </div>
 
+    <script>
+      (function () {
+        const banner = document.getElementById('consentBanner');
+        const acceptButton = document.getElementById('acceptAdsConsent');
+        const declineButton = document.getElementById('declineAdsConsent');
+
+        if (!banner || !acceptButton || !declineButton || window.__adsBlocked) {
+          return;
+        }
+
+        if (window.__adsConsent !== 'accepted' && window.__adsConsent !== 'declined') {
+          banner.classList.remove('hidden');
+        }
+
+        acceptButton.addEventListener('click', () => {
+          window.localStorage.setItem('ads-consent-v1', 'accepted');
+          banner.classList.add('hidden');
+          window.location.reload();
+        });
+
+        declineButton.addEventListener('click', () => {
+          window.localStorage.setItem('ads-consent-v1', 'declined');
+          banner.classList.add('hidden');
+        });
+      })();
+    </script>
     <script type="module" src="script.js"></script>
   </body>
 </html>
