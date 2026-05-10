@@ -1,0 +1,16 @@
+{
+  "name": "GlassEffect",
+  "short_name": "GlassEffect",
+  "description": "Gerador de Glassmorphism CSS com preview em tempo real.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

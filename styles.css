@@ -287,6 +287,21 @@ body {
   box-shadow: 0 16px 30px rgba(16, 185, 129, 0.12);
 }
 
+.copy-button-secondary {
+  border-color: rgba(168, 85, 247, 0.35);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+}
+
+.copy-button-ghost {
+  border-color: rgba(148, 163, 184, 0.3);
+  background: linear-gradient(135deg, rgba(71, 85, 105, 0.2), rgba(51, 65, 85, 0.18));
+}
+
+.copy-button-secondary:hover,
+.copy-button-ghost:hover {
+  transform: translateY(-1px);
+}
+
 .ad-shell {
   width: 100%;
 }

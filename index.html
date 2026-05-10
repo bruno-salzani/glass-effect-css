@@ -13,13 +13,34 @@
       content="Gerador de Glassmorphism CSS, efeito vidro fosco css, glass effect css, backdrop-filter generator"
     />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Gerador de Glassmorphism CSS | GlassEffect" />
+    <meta name="author" content="GlassEffect" />
+    <meta name="application-name" content="GlassEffect" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="__SITE_URL__/" />
+    <link rel="alternate" hreflang="pt-BR" href="__SITE_URL__/" />
+
+    <meta property="og:title" content="Gerador de Glassmorphism CSS Grátis | GlassEffect" />
     <meta
       property="og:description"
-      content="Ferramenta gratuita para gerar efeito vidro fosco CSS com preview em tempo real e código pronto para copiar."
+      content="Crie efeito vidro fosco com preview em tempo real, copie o CSS e baixe o snippet pronto para produção."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="__SITE_URL__/" />
+    <meta property="og:site_name" content="GlassEffect" />
+    <meta property="og:image" content="__SITE_URL__/og-image.svg" />
+    <meta property="og:image:alt" content="Preview da ferramenta GlassEffect para gerar CSS glassmorphism" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gerador de Glassmorphism CSS Grátis | GlassEffect" />
+    <meta
+      name="twitter:description"
+      content="Ajuste blur, transparência e saturação com preview ao vivo. Copie e baixe CSS pronto."
+    />
+    <meta name="twitter:image" content="__SITE_URL__/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,6 +66,23 @@
       };
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "GlassEffect",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "pt-BR",
+        "url": "__SITE_URL__/",
+        "description": "Gerador online de glassmorphism CSS com preview em tempo real para copiar e baixar snippets prontos.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-400/30 selection:text-white">
@@ -252,18 +290,29 @@
                       <h2 class="text-lg font-semibold text-white">Código CSS gerado</h2>
                       <p class="text-sm text-slate-400">Copie o snippet final já com compatibilidade incluída.</p>
                     </div>
-                    <button
-                      id="copyButton"
-                      type="button"
-                      class="copy-button"
-                      aria-live="polite"
-                    >
-                      <i data-lucide="copy" class="h-4 w-4"></i>
-                      <span id="copyButtonLabel">Copiar CSS</span>
-                    </button>
+                    <div class="flex flex-wrap gap-2">
+                      <button
+                        id="copyButton"
+                        data-testid="copy-button"
+                        type="button"
+                        class="copy-button"
+                        aria-live="polite"
+                      >
+                        <i data-lucide="copy" class="h-4 w-4"></i>
+                        <span id="copyButtonLabel">Copiar CSS</span>
+                      </button>
+                      <button id="downloadButton" data-testid="download-button" type="button" class="copy-button copy-button-secondary">
+                        <i data-lucide="download" class="h-4 w-4"></i>
+                        <span>Baixar CSS</span>
+                      </button>
+                      <button id="resetButton" data-testid="reset-button" type="button" class="copy-button copy-button-ghost">
+                        <i data-lucide="rotate-ccw" class="h-4 w-4"></i>
+                        <span>Limpar</span>
+                      </button>
+                    </div>
                   </div>
                   <label class="sr-only" for="cssOutput">Código CSS gerado</label>
-                  <textarea id="cssOutput" class="code-output" readonly></textarea>
+                  <textarea id="cssOutput" data-testid="css-output" class="code-output" readonly></textarea>
                 </section>
               </div>
             </div>
@@ -342,6 +391,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

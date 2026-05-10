@@ -1,0 +1,3 @@
+# Netlify style redirect file (optional)
+# Keep single-page root serving explicit
+/ /index.html 200

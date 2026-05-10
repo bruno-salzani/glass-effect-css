@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="190" y="115" width="820" height="400" rx="40" fill="url(#glass)" stroke="rgba(255,255,255,0.45)"/>
+  <text x="240" y="280" fill="#ffffff" font-size="64" font-family="Inter, Arial, sans-serif" font-weight="700">GlassEffect</text>
+  <text x="240" y="350" fill="#cbd5e1" font-size="34" font-family="Inter, Arial, sans-serif">Gerador de Glassmorphism CSS</text>
+  <text x="240" y="405" fill="#94a3b8" font-size="28" font-family="Inter, Arial, sans-serif">Preview em tempo real • Copiar • Baixar</text>
+</svg>

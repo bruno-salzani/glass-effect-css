@@ -119,29 +119,73 @@ O projeto já nasce com base para crescimento orgânico e monetização:
 cd GlassEffect
 ```
 
-3) Execute com servidor local (recomendado):
+3) Instale dependências:
 ```bash
-# Exemplo com Python
-python -m http.server 5500
+npm install
 ```
 
-4) Acesse no navegador:
-```text
-http://localhost:5500
+4) Ambiente de desenvolvimento:
+```bash
+npm run dev
 ```
 
-Também é possível abrir o `index.html` diretamente, mas o servidor local é preferível para comportamento consistente entre ambientes.
+5) Build de produção (minificado):
+```bash
+npm run build
+```
+
+6) Pré-visualizar build de produção:
+```bash
+npm run preview
+```
+
+7) Preparar metadados SEO para domínio final (obrigatório antes do deploy):
+```bash
+SITE_URL=https://seu-dominio.com npm run release:prepare
+```
 
 ---
 
-# 🧪 Validação Manual Recomendada
+# 🧪 Qualidade, Testes e Cobertura
 
-- Ajustar cada slider e conferir atualização imediata no preview.
-- Trocar entre os 3 tipos de fundo e verificar legibilidade do cartão.
-- Testar entrada de cor em HEX e RGBA.
-- Copiar o CSS e aplicar em um componente externo para validar portabilidade.
+O projeto possui validação automatizada com foco em confiabilidade de publicação:
+
+- **Unitários (Vitest)** com cobertura de lógica pura.
+- **Smoke tests (Playwright)** para garantir inicialização e elementos críticos.
+- **E2E (Playwright)** cobrindo fluxos principais:
+  - editar controles e regenerar snippet
+  - copiar CSS
+  - baixar CSS
+  - limpar/restaurar estado
+  - alternar fundos
+
+Comandos:
+```bash
+npm run lint
+npm run test:coverage
+npm run test:smoke
+npm run test:e2e
+```
+
+## Pipeline recomendada de release
+```bash
+SITE_URL=https://seu-dominio.com npm run release:prepare
+npm run lint
+npm run build
+npm run test:coverage
+npm run test:smoke
+npm run test:e2e
+```
 
 ---
+
+# 🔐 Segurança e publicação pública
+
+- Headers de segurança para deploy estático: [`_headers`](_headers)
+- Redirect padrão para hosts compatíveis: [`_redirects`](_redirects)
+- Workflow CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+- Licença OSS: [`LICENSE`](LICENSE)
+- Modelo de variáveis: [`.env.example`](.env.example)
 
 # 🤝 Conclusão
 
