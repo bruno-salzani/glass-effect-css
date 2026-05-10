@@ -310,54 +310,11 @@ body {
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
-}
-
-.ad-unit-banner {
   min-height: 110px;
 }
 
-.ad-unit-square {
-  min-height: 280px;
-}
-
-.ad-unit-vertical {
+.ad-shell-sidebar .adsbygoogle {
   min-height: 600px;
-}
-
-.consent-banner {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  margin: 0 auto 1rem;
-  max-width: 72rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1rem;
-  background: rgba(2, 6, 23, 0.94);
-  padding: 0.9rem 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.35);
-}
-
-.consent-banner p {
-  margin: 0;
-  font-size: 0.86rem;
-  line-height: 1.45;
-  color: rgb(203 213 225);
-}
-
-.consent-banner__actions {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.consent-banner__actions .copy-button {
-  min-height: 2.25rem;
-  padding: 0.5rem 0.9rem;
-  font-size: 0.84rem;
 }
 
 .ad-slot {
@@ -451,7 +408,7 @@ body {
     min-height: 220px;
   }
 
-  .ad-unit-vertical {
+  .ad-shell-sidebar .adsbygoogle {
     min-height: 280px;
   }
 }
@@ -473,26 +430,12 @@ body {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 24px 70px rgba(15, 23, 42, 0.34);
   }
 
-  .ad-unit-banner {
+  .ad-shell .adsbygoogle {
     min-height: 96px;
   }
 
-  .ad-unit-square,
-  .ad-unit-vertical {
+  .ad-shell-sidebar .adsbygoogle {
     min-height: 250px;
-  }
-
-  .consent-banner {
-    border-radius: 0;
-    margin-bottom: 0.75rem;
-  }
-
-  .consent-banner__actions {
-    width: 100%;
-  }
-
-  .consent-banner__actions .copy-button {
-    flex: 1;
   }
 
   .glass-card {

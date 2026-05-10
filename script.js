@@ -40,10 +40,6 @@ const elements = {
   solidControls: document.getElementById('solidControls'),
   imageControls: document.getElementById('imageControls'),
   adSlots: Array.from(document.querySelectorAll('.ad-shell')),
-  adUnits: Array.from(document.querySelectorAll('.adsbygoogle')),
-  consentBanner: document.getElementById('consentBanner'),
-  acceptAdsConsent: document.getElementById('acceptAdsConsent'),
-  declineAdsConsent: document.getElementById('declineAdsConsent'),
 };
 
 const sliderMap = [
@@ -183,94 +179,6 @@ function bindEvents() {
   elements.resetButton.addEventListener('click', resetState);
 }
 
-const ADS_CONSENT_KEY = 'ads-consent-v1';
-
-function getAdsConsent() {
-  return window.localStorage.getItem(ADS_CONSENT_KEY);
-}
-
-function setAdsConsent(value) {
-  window.localStorage.setItem(ADS_CONSENT_KEY, value);
-}
-
-function setAdShellState(loaded) {
-  elements.adSlots.forEach((slot) => {
-    slot.classList.toggle('is-loaded', loaded);
-    slot.setAttribute('data-ad-state', loaded ? 'loaded' : 'idle');
-  });
-}
-
-function runAdsForUnits(units) {
-  units.forEach((unit) => {
-    if (unit.dataset.adsInitialized === 'true') {
-      return;
-    }
-
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      unit.dataset.adsInitialized = 'true';
-    } catch (error) {
-      console.error('AdSense push error:', error);
-    }
-  });
-
-  setAdShellState(true);
-}
-
-function initAdsLazy() {
-  const consent = getAdsConsent();
-  if (consent !== 'accepted') {
-    setAdShellState(false);
-    return;
-  }
-
-  if (!('IntersectionObserver' in window)) {
-    runAdsForUnits(elements.adUnits);
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        runAdsForUnits([entry.target]);
-        observer.unobserve(entry.target);
-      });
-    },
-    { rootMargin: '250px 0px' }
-  );
-
-  elements.adUnits.forEach((unit) => observer.observe(unit));
-}
-
-function bindConsentBanner() {
-  const consent = getAdsConsent();
-
-  if (consent === 'accepted' || consent === 'declined') {
-    elements.consentBanner.classList.add('hidden');
-    if (consent === 'accepted') {
-      initAdsLazy();
-    }
-    return;
-  }
-
-  elements.consentBanner.classList.remove('hidden');
-
-  elements.acceptAdsConsent.addEventListener('click', () => {
-    setAdsConsent('accepted');
-    elements.consentBanner.classList.add('hidden');
-    initAdsLazy();
-  });
-
-  elements.declineAdsConsent.addEventListener('click', () => {
-    setAdsConsent('declined');
-    elements.consentBanner.classList.add('hidden');
-    setAdShellState(false);
-  });
-}
 
 function initApp() {
   syncInputs();
@@ -278,7 +186,6 @@ function initApp() {
   updatePreview();
   generateCSS();
   bindEvents();
-  bindConsentBanner();
 
   if (window.lucide) {
     window.lucide.createIcons();
