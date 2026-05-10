@@ -88,6 +88,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-400/30 selection:text-white">
+    <div id="consentBanner" class="consent-banner hidden" role="dialog" aria-live="polite" aria-label="Consentimento de cookies">
+      <p>Usamos cookies para medição e publicidade (Google AdSense). Você pode aceitar ou continuar sem anúncios personalizados.</p>
+      <div class="consent-banner__actions">
+        <button id="acceptAdsConsent" type="button" class="copy-button">Aceitar</button>
+        <button id="declineAdsConsent" type="button" class="copy-button copy-button-ghost">Recusar</button>
+      </div>
+    </div>
     <div class="relative isolate overflow-hidden">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.14),_transparent_24%)]"></div>
       <div class="relative mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
@@ -111,7 +118,7 @@
             <section aria-label="Publicidade no topo" class="ad-shell ad-shell-horizontal" role="complementary">
               <p class="mb-2 text-center text-[11px] uppercase tracking-[0.18em] text-slate-400">Publicidade</p>
               <ins
-                class="adsbygoogle"
+                class="adsbygoogle ad-unit ad-unit-banner"
                 style="display:block"
                 data-ad-client="ca-pub-6566192641888645"
                 data-ad-slot="5183612327"
@@ -293,7 +300,7 @@
                 <section aria-label="Publicidade no conteúdo" class="ad-shell ad-shell-horizontal" role="complementary">
                   <p class="mb-2 text-center text-[11px] uppercase tracking-[0.18em] text-slate-400">Publicidade</p>
                   <ins
-                    class="adsbygoogle"
+                    class="adsbygoogle ad-unit ad-unit-square"
                     style="display:block"
                     data-ad-client="ca-pub-6566192641888645"
                     data-ad-slot="9222479973"
@@ -341,7 +348,7 @@
               <section aria-label="Publicidade lateral" class="hidden xl:block ad-shell ad-shell-sidebar" role="complementary">
                 <p class="mb-2 text-center text-[11px] uppercase tracking-[0.18em] text-slate-400">Publicidade</p>
                 <ins
-                  class="adsbygoogle"
+                  class="adsbygoogle ad-unit ad-unit-vertical"
                   style="display:block"
                   data-ad-client="ca-pub-6566192641888645"
                   data-ad-slot="8543823128"
@@ -402,7 +409,7 @@
         <section aria-label="Publicidade no rodapé" class="mt-8 ad-shell ad-shell-horizontal" role="complementary">
           <p class="mb-2 text-center text-[11px] uppercase tracking-[0.18em] text-slate-400">Publicidade</p>
           <ins
-            class="adsbygoogle"
+            class="adsbygoogle ad-unit ad-unit-banner"
             style="display:block"
             data-ad-client="ca-pub-6566192641888645"
             data-ad-slot="5183612327"
@@ -412,17 +419,14 @@
         </section>
 
         <footer class="mt-8 pb-4 text-center text-sm text-slate-500">
-          GlassEffect — Ferramenta front-end para criar efeitos de vidro fosco com preview e CSS pronto para uso.
+          <p>GlassEffect — Ferramenta front-end para criar efeitos de vidro fosco com preview e CSS pronto para uso.</p>
+          <p class="mt-2">
+            <a href="/privacy.html" class="text-slate-400 underline underline-offset-4 hover:text-slate-200">Política de Privacidade</a>
+          </p>
         </footer>
       </div>
     </div>
 
     <script type="module" src="script.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
   </body>
 </html>
